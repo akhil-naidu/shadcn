@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { DialogDescription } from '@/components/ui/dialog';
 
 const useForm = (initialData: any) => {
   const initialValuesArray = initialData.map((el: any) => ({
@@ -9,13 +10,14 @@ const useForm = (initialData: any) => {
   }));
 
   const initialDataArray = initialData.map((el: any) => {
-    const { id, value, type, fName, placeHolder } = el;
+    const { id, value, type, fName, placeHolder, description } = el;
 
     return {
       [id]: value,
       type,
       fName,
       placeHolder,
+      description,
     };
   });
 
@@ -51,6 +53,7 @@ const useForm = (initialData: any) => {
           onChange={formik.handleChange}
           value={formik.values[inputName]}
         />
+        <DialogDescription>{FInput.description}</DialogDescription>
       </div>
     );
   });

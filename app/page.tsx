@@ -24,17 +24,19 @@ const DialogButton = () => {
       type: 'text',
       fName: 'FInputName',
       placeHolder: 'enter Your Name',
+      description: 'No space is allowed for the name or attribute',
     },
-    {
-      id: 'age',
-      value: '',
-      type: 'number',
-      fName: 'FInputAge',
-      placeHolder: 'enter Your age',
-    },
+    // {
+    //   id: 'age',
+    //   value: '',
+    //   type: 'number',
+    //   fName: 'FInputAge',
+    //   placeHolder: 'enter Your age',
+    //   description: ' Best for description, biography, Exact search isdisabled.',
+    // },
   ];
 
-  const [formik, [FInputName, FInputAge]] = useForm(initialData);
+  const [formik, FInputArray] = useForm(initialData);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -73,21 +75,7 @@ const DialogButton = () => {
               </div>
 
               <TabsContent value='basic' className='space-y-6'>
-                <div className='space-y-1'>
-                  {FInputName}
-
-                  <DialogDescription>
-                    No space is allowed for the name or attribute
-                  </DialogDescription>
-                </div>
-
-                <div className='space-y-1'>
-                  {FInputAge}
-
-                  <DialogDescription>
-                    No strings are allowed for the age
-                  </DialogDescription>
-                </div>
+                <div className='space-y-1'>{FInputArray}</div>
 
                 <div className='space-y-1'>
                   <RadioGroup className='space-y-3' defaultValue='short-text'>
